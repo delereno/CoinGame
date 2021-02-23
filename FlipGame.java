@@ -1,33 +1,35 @@
 
 /**
- * Write a description of class FlipGame here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Driver class that flips a coin multiple times 
+ *andcounts the number of heads and tails that result.
+ * 
+ * @author Del Huang
+ * @version 23/02/21
  */
 public class FlipGame
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class FlipGame
-     */
-    public FlipGame()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public static void main (String[] args){
+        final int FLIPS = 1000000;
+        int heads = 0, tails = 0;
+        
+        // Make a coin instance
+        Coin myCoin = new Coin();
+        
+        // Flip the coin n times and tally the result
+        for (int count = 1; count <= FLIPS; count++)
+        {
+            myCoin.flip();
+            
+            // Check face result
+            if (myCoin.isHeads()) 
+                heads++;
+            else 
+                tails++;
+        }
+        
+        // Print Result
+        System.out.println("Number of flips: " + FLIPS);
+        System.out.println("Number of heads: " + heads);
+        System.out.println("Number of tails: " + tails);
     }
 }
